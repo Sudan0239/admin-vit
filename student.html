@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Selection</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: darkcyan;
+        padding: 20px;
+      }
+      form {
+        background: #fff;
+        padding: 20px;
+        display: inline-block;
+        border-radius: 5px;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+      }
+      select,
+      input {
+        padding: 8px;
+        font-size: 16px;
+        margin-top: 10px;
+        border-radius: 30px;
+      }
+      .output {
+        margin-top: 20px;
+        font-size: 18px;
+        color: #333;
+        font-family: Arial, Helvetica, sans-serif;
+        padding-bottom: 20px;
+      }
+      img {
+        border-radius: 20px;
+        width: 300px;
+      }
+      .logout0012 {
+        border-radius: 20px;
+        width: 300px;
+        color: red;
+        height: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <img
+      src="https://vit.ac.in/wp-content/uploads/2023/06/VIT-40-logo-Combo-white-2048x508.png"
+      alt="vit_logo"
+    />
+    <h1>Choose a Student - Admin VIT Vellore</h1>
+    <form id="studentForm">
+      <label for="student">Pick a student : </label>
+      <select name="student" id="student">
+        <option value="ECS - BEL">Sudan A S</option>
+        <option value="CSBS - BBS">Pravin A</option>
+        <option value="CSE (Core) - BCE">Vishal Vivek</option>
+      </select>
+      <input type="submit" value="Submit" />
+    </form>
+    <div class="output" id="output"></div>
+    <button type="button" class="logout0012" onclick="logout()">
+      <strong>LOGOUT USER</strong>
+    </button>
+
+    <script>
+      if (sessionStorage.getItem("loggedIn") !== "true") {
+        window.location.href = "admin.html"; // Redirect to login page
+      }
+
+      // Logout function
+      function logout() {
+        sessionStorage.removeItem("loggedIn");
+        window.location.href = "admin.html";
+      }
+      setTimeout(() => {
+        logout();
+      }, 50000);
+      document
+        .getElementById("studentForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          var selectedStudent = document.getElementById("student").value;
+          document.getElementById("output").innerText =
+            "The VTOP is Enabled, Check ! " + selectedStudent;
+        });
+    </script>
+  </body>
+</html>
